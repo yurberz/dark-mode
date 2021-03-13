@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "styled-components";
+import { CgSun } from "react-icons/cg";
+import { HiMoon } from "react-icons/hi";
+import usePersistedThemeHook from "./hooks/persistedTheme";
+import GlobalStyles from "./themes/GlobalStyles";
+import dark from "./themes/dark";
+import light from "./themes/light";
 
-function App() {
+const App = () => {
+  const [theme, setTheme] = usePersistedThemeHook("modeTheme", light);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === "light" ? dark : light);
+  };
+
+  const icon = theme.title === "light" ? <HiMoon size={30} /> : <CgSun size={30} />;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div className="container">
+        <div className="wrapper">
+          <button className="toggle-button" onClick={toggleTheme}>
+            {icon}
+          </button>
+          <h1>DarkMode Kung-Fu</h1>
+          <span>"To Infinity and Beyond!"</span>
+        </div>
+      </div>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
