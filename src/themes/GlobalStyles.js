@@ -27,8 +27,8 @@ body {
   top: 50px;
   right: 50px;
   cursor: pointer;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   border: none;
   background-color: ${(props) => props.theme.colors.titleColor};

@@ -13,7 +13,7 @@ const App = () => {
     setTheme(theme.title === "light" ? dark : light);
   };
 
-  const icon = theme.title === "light" ? <HiMoon size={30} /> : <CgSun size={30} />;
+  const icon = theme.title === "light" ? <HiMoon size={50} /> : <CgSun size={50} />;
 
   return (
     <ThemeProvider theme={theme}>
